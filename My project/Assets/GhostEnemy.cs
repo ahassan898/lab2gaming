@@ -31,6 +31,7 @@ public class GhostEnemy : EnemyController
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Player was hit by " + gameObject.name + " (damage " + damage + ")");
             FindObjectOfType<PlayerStats>().TakeDamage(damage);
             Flip();
         }

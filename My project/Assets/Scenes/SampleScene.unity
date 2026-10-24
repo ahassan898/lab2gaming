@@ -123,46 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &4818184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4818185}
-  m_Layer: 0
-  m_Name: Level
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4818185
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4818184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 814399834}
-  - {fileID: 200382256}
-  - {fileID: 1715907293}
-  - {fileID: 243089396}
-  - {fileID: 1832316209}
-  - {fileID: 35285135}
-  - {fileID: 839439908}
-  - {fileID: 1511977460}
-  - {fileID: 359851114}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &31516055
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,11 +212,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4818185}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -300,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3060366501500576927, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_Name
-      value: Checkpoint 0 (Main Level Start)
+      value: Mushroom Checkpoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6971cca5b643174b86835156a362165, type: 3}
@@ -663,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200382256}
   m_Layer: 0
-  m_Name: Decoration
+  m_Name: Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,8 +658,8 @@ Transform:
   - {fileID: 2116972800}
   - {fileID: 671393190}
   - {fileID: 273810016}
-  m_Father: {fileID: 4818185}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &211686057
 GameObject:
@@ -744,7 +704,7 @@ GameObject:
   - component: {fileID: 213387941}
   - component: {fileID: 213387940}
   m_Layer: 6
-  m_Name: Wall Pillar 1
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,8 +917,8 @@ Transform:
   m_Children:
   - {fileID: 1417152290}
   - {fileID: 1080860837}
-  m_Father: {fileID: 4818185}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273810015
 GameObject:
@@ -1056,7 +1016,7 @@ GameObject:
   - component: {fileID: 279488042}
   - component: {fileID: 279488041}
   m_Layer: 6
-  m_Name: Elevator Well Floor
+  m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1168,7 +1128,7 @@ GameObject:
   - component: {fileID: 355358961}
   - component: {fileID: 355358960}
   m_Layer: 6
-  m_Name: Brick 1
+  m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1358,11 +1318,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4818185}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1406,7 +1366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3060366501500576927, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_Name
-      value: Checkpoint 3 (End)
+      value: Mushroom Checkpoint (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6971cca5b643174b86835156a362165, type: 3}
@@ -1511,7 +1471,7 @@ GameObject:
   - component: {fileID: 477009122}
   - component: {fileID: 477009121}
   m_Layer: 6
-  m_Name: Wall Pillar (right)
+  m_Name: Wall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1622,7 +1582,7 @@ GameObject:
   - component: {fileID: 497629704}
   - component: {fileID: 497629703}
   m_Layer: 6
-  m_Name: Lower Path and End
+  m_Name: Ground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1938,7 +1898,7 @@ GameObject:
   - component: {fileID: 567176167}
   - component: {fileID: 567176166}
   m_Layer: 6
-  m_Name: Brick 3
+  m_Name: Brick (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,7 +2022,7 @@ GameObject:
   - component: {fileID: 567278310}
   - component: {fileID: 567278309}
   m_Layer: 6
-  m_Name: Bouncy Pad
+  m_Name: Bouncy Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2172,7 +2132,7 @@ GameObject:
   - component: {fileID: 611554236}
   - component: {fileID: 611554237}
   m_Layer: 0
-  m_Name: Lake (deep)
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2257,7 +2217,7 @@ GameObject:
   - component: {fileID: 623616587}
   - component: {fileID: 623616586}
   m_Layer: 6
-  m_Name: Wall Pillar 2
+  m_Name: Wall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2995,7 +2955,7 @@ GameObject:
   - component: {fileID: 782674115}
   - component: {fileID: 782674116}
   m_Layer: 0
-  m_Name: Ghost Spawn Flower
+  m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3078,7 +3038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814399834}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3115,19 +3075,19 @@ Transform:
   - {fileID: 1216196598}
   - {fileID: 497629702}
   - {fileID: 1717116144}
-  m_Father: {fileID: 4818185}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &839439907
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4818185}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3171,7 +3131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3060366501500576927, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_Name
-      value: Checkpoint 1 (Tree)
+      value: Mushroom Checkpoint (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6971cca5b643174b86835156a362165, type: 3}
@@ -3615,7 +3575,7 @@ GameObject:
   - component: {fileID: 1107673874}
   - component: {fileID: 1107673873}
   m_Layer: 0
-  m_Name: Saw Wake-up Zone
+  m_Name: Saw Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3688,7 +3648,7 @@ GameObject:
   - component: {fileID: 1125559952}
   - component: {fileID: 1125559951}
   m_Layer: 0
-  m_Name: Water Sparkles
+  m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8509,7 +8469,7 @@ GameObject:
   - component: {fileID: 1216196600}
   - component: {fileID: 1216196599}
   m_Layer: 6
-  m_Name: High Ledge
+  m_Name: Ledge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8620,7 +8580,7 @@ GameObject:
   - component: {fileID: 1277950022}
   - component: {fileID: 1277950021}
   m_Layer: 6
-  m_Name: Wall Pillar (left)
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8762,7 +8722,7 @@ GameObject:
   - component: {fileID: 1330433740}
   - component: {fileID: 1330433739}
   m_Layer: 6
-  m_Name: Ground 3
+  m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9049,7 +9009,7 @@ GameObject:
   - component: {fileID: 1468271218}
   - component: {fileID: 1468271217}
   m_Layer: 6
-  m_Name: Start Ground
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9161,7 +9121,7 @@ GameObject:
   - component: {fileID: 1472457310}
   - component: {fileID: 1472457309}
   m_Layer: 0
-  m_Name: Trapdoor Pit
+  m_Name: Lake (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9330,7 +9290,7 @@ GameObject:
   - component: {fileID: 1494197370}
   - component: {fileID: 1494197369}
   m_Layer: 6
-  m_Name: Brick 2
+  m_Name: Brick (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9447,11 +9407,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4818185}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 656644777153303851, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9495,7 +9455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3060366501500576927, guid: e6971cca5b643174b86835156a362165, type: 3}
       propertyPath: m_Name
-      value: Checkpoint 2 (Cliff Edge)
+      value: Mushroom Checkpoint (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6971cca5b643174b86835156a362165, type: 3}
@@ -9664,7 +9624,7 @@ GameObject:
   - component: {fileID: 1644372225}
   - component: {fileID: 1644372226}
   m_Layer: 0
-  m_Name: Floating Island (background)
+  m_Name: Floating Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9820,7 +9780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1715907293}
   m_Layer: 0
-  m_Name: Hazards
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9843,8 +9803,8 @@ Transform:
   - {fileID: 1125559950}
   - {fileID: 1472457308}
   - {fileID: 1921977647}
-  m_Father: {fileID: 4818185}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717116143
 GameObject:
@@ -9858,7 +9818,7 @@ GameObject:
   - component: {fileID: 1717116146}
   - component: {fileID: 1717116145}
   m_Layer: 6
-  m_Name: End Wall
+  m_Name: Wall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10162,7 +10122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1832316209}
   m_Layer: 0
-  m_Name: Lab 6 Showcase
+  m_Name: Lab 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10188,8 +10148,8 @@ Transform:
   - {fileID: 355519763}
   - {fileID: 1532674764}
   - {fileID: 1107673872}
-  m_Father: {fileID: 4818185}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850486089
 GameObject:
@@ -10288,7 +10248,7 @@ GameObject:
   - component: {fileID: 1885842431}
   - component: {fileID: 1885842430}
   m_Layer: 6
-  m_Name: Trapdoor Left Platform
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10615,7 +10575,7 @@ GameObject:
   - component: {fileID: 1921977647}
   - component: {fileID: 1921977648}
   m_Layer: 0
-  m_Name: Trapdoor Pit (deep)
+  m_Name: Water (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10699,7 +10659,7 @@ GameObject:
   - component: {fileID: 1938568310}
   - component: {fileID: 1938568311}
   m_Layer: 0
-  m_Name: Level Start Wall
+  m_Name: Invisible Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10757,7 +10717,7 @@ GameObject:
   - component: {fileID: 1953469803}
   - component: {fileID: 1953469804}
   m_Layer: 0
-  m_Name: Ghost Trigger Flag
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,7 @@ public class DeadlyDrop : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Player fell into " + gameObject.name + " - respawning at the last checkpoint");
             FindObjectOfType<LevelManager>().RespawnPlayer();
         }
     }

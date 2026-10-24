@@ -28,6 +28,8 @@ public class checkpoint : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            if (FindObjectOfType<LevelManager>().CurrentCheckpoint != gameObject)
+                Debug.Log("Checkpoint reached: " + (transform.parent != null ? transform.parent.name : name));
             FindObjectOfType<LevelManager>().CurrentCheckpoint = gameObject;
         }
     }
