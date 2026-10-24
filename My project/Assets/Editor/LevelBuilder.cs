@@ -5,12 +5,13 @@ using UnityEngine;
 
 // Adds "Labs > Build Full Level" to the menu bar. It rebuilds SampleScene as one level that
 // uses everything from Labs 2-6, left to right:
+//   Lab 6 showcase - where the player spawns: one station per Lab 6 exercise (#19-#22)
 //   Start area   - tree + mushroom checkpoint, bouncy pad (Lab 4), breakable bricks (Lab 5)
 //   Lake         - deadly water with a sparkle particle system (Labs 4-5)
 //   Cliff        - second checkpoint, walking slime between two Wall pillars (Lab 6)
 //   Trapdoor     - hinge joint over a water pit (Lab 5)
 //   Elevator     - rising platform up to a high ledge (Lab 5), ghost spawn point (Lab 6)
-//   End          - third checkpoint, moving saw that follows the player (Lab 6)
+//   End          - third checkpoint and the end wall
 // Running it again throws away the old "Level" group and builds a fresh one.
 public static class LevelBuilder
 {
@@ -64,8 +65,12 @@ public static class LevelBuilder
 
         SetUpPlayer(player);
         SetUpCamera(player.transform);
-        if (Object.FindObjectOfType<LevelManager>() == null)
-            Undo.RegisterCreatedObjectUndo(new GameObject("Level Manager", typeof(LevelManager)), "Build Full Level");
+        LevelManager levelManager = Object.FindObjectOfType<LevelManager>();
+        if (levelManager == null)
+        {
+            levelManager = new GameObject("Level Manager", typeof(LevelManager)).GetComponent<LevelManager>();
+            Undo.RegisterCreatedObjectUndo(levelManager.gameObject, "Build Full Level");
+        }
 
         Transform ground = Group("Ground");
         Transform decor = Group("Decoration");
@@ -73,8 +78,8 @@ public static class LevelBuilder
         Transform enemies = Group("Enemies");
 
         // ---------- Start area: ground top at y = -3 ----------
-        Block(ground, "Start Ground", "GrassBlock", -20f, 6f, -3f, -10f, friction);
-        Wall(ground, "Level Start Wall", -12.5f, 1f, false);
+        Block(ground, "Start Ground", "GrassBlock", -60f, 6f, -3f, -10f, friction);
+        Wall(ground, "Level Start Wall", -49.5f, 1f, false);
 
         Sprite[] trees = AssetDatabase.LoadAllAssetsAtPath("Assets/trees and green objects.png")
             .OfType<Sprite>().OrderByDescending(s => s.rect.width * s.rect.height).ToArray();
@@ -87,6 +92,7 @@ public static class LevelBuilder
         }
 
         GameObject checkpointPrefab = CheckpointPrefab();
+        Lab6Showcase(checkpointPrefab, player.transform);
         PlaceCheckpoint(checkpointPrefab, "Checkpoint 1 (Tree)", -1.5f, -3f);
 
         // Lab 4 #11: bouncy platform
@@ -129,15 +135,16 @@ public static class LevelBuilder
         Block(ground, "Lower Path and End", "GrassBlock", 33f, 70f, -2f, -10f, friction);
 
         // Lab 6 #21: ghost spawns at the end of the ledge when the player passes the trigger
-        GhostSpawner(enemies, 35.5f, 46f);
+        // (flies left at the height of a player standing on the high ledge)
+        Transform ghostSpawn = new GameObject("Ghost Spawn Point").transform;
+        ghostSpawn.SetParent(enemies);
+        ghostSpawn.position = new Vector2(46f, 2f);
+        GhostTrigger(ghostSpawn, 35.5f, 1f, ghostSpawn);
 
         // ---------- End ----------
         PlaceCheckpoint(checkpointPrefab, "Checkpoint 3 (End)", 47f, -2f);
         GameObject endWall = Block(ground, "End Wall", "StoneBlock", 60f, 61f, 6f, -2f, null);
         endWall.tag = "Wall";
-
-        // Lab 6 #22: saw that follows the player
-        Saw(enemies, player.transform, 57f, -0.5f);
 
         // Bushes and flowers along the way
         string b = "Assets/Bushes & Flowers/";
@@ -172,7 +179,7 @@ public static class LevelBuilder
         Undo.RecordObject(player.transform, "Build Full Level");
         player.gameObject.tag = "Player";
         player.transform.SetParent(null);
-        player.transform.position = new Vector3(-9f, -2.4f, 0f);
+        player.transform.position = new Vector3(-46f, -2.4f, 0f);
         if (player.GetComponent<PlayerStats>() == null)
             Undo.AddComponent<PlayerStats>(player.gameObject);
     }
@@ -193,7 +200,7 @@ public static class LevelBuilder
         Undo.RecordObject(follow, "Build Full Level");
         follow.target = player;
         follow.cameraSpeed = 6f;
-        follow.minX = -5f;
+        follow.minX = -42f;
         follow.maxX = 53.5f;
         follow.minY = -1f;
         follow.maxY = 3f;
@@ -358,26 +365,56 @@ public static class LevelBuilder
         enemy.damage = 1;
     }
 
-    static void GhostSpawner(Transform parent, float triggerX, float spawnX)
+    // Lab 6 #21: trigger collider (offset to the left) that spawns the ghost prefab at spawnPoint
+    static void GhostTrigger(Transform parent, float x, float y, Transform spawnPoint)
     {
-        GameObject spawnPoint = new GameObject("Ghost Spawn Point");
-        spawnPoint.transform.SetParent(parent);
-        // flies left at the height of a player standing on the high ledge
-        spawnPoint.transform.position = new Vector2(spawnX, 2f);
-
         GameObject trigger = new GameObject("Trigger Point");
-        trigger.transform.SetParent(spawnPoint.transform);
-        trigger.transform.position = new Vector2(triggerX, 1f);
+        trigger.transform.SetParent(parent);
+        trigger.transform.position = new Vector2(x, y);
         BoxCollider2D area = trigger.AddComponent<BoxCollider2D>();
         area.isTrigger = true;
         area.size = new Vector2(1f, 7f);
         area.offset = new Vector2(-0.5f, 0f);
         SpawnGhost spawner = trigger.AddComponent<SpawnGhost>();
         spawner.enemy = AssetDatabase.LoadAssetAtPath<Transform>("Assets/Prefabs/Spawned Ghost.prefab");
-        spawner.spawnPoint = spawnPoint.transform;
+        spawner.spawnPoint = spawnPoint;
     }
 
-    static void Saw(Transform parent, Transform player, float x, float y)
+    // A short walk-through area where the player spawns, with one station per Lab 6 exercise
+    static void Lab6Showcase(GameObject checkpointPrefab, Transform player)
+    {
+        Transform show = Group("Lab 6 Showcase");
+        const float top = -3f;
+
+        // #19-#20: slime walking between two pillars tagged Wall
+        GameObject left = Block(show, "Wall Pillar (left)", "StoneBlock", -37.5f, -36.5f, top + 1f, top, null);
+        GameObject right = Block(show, "Wall Pillar (right)", "StoneBlock", -30.5f, -29.5f, top + 1f, top, null);
+        left.tag = "Wall";
+        right.tag = "Wall";
+        Slime(show, -33.5f, top);
+
+        // #21: pass the flag and a ghost is Instantiated at the flower (the spawn point)
+        GameObject marker = MakeSprite(show, "Ghost Trigger Flag", Art + "Flag.png", new Vector2(-21.5f, top + 0.5f), "Default", -10);
+        marker.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        marker.transform.position = new Vector2(-21.5f, top + 0.75f);
+        SpriteRenderer flower = Decor(show, "Ghost Spawn Flower", Load("Assets/Bushes & Flowers/Flower 10/Flower 10 - RED.png"), -19f, top, 1.2f, -10);
+        GhostTrigger(show, -21f, -1f, flower.transform);
+
+        // #22: the saw sleeps until the player reaches it, then follows with MoveTowards()
+        MovingSaw saw = Saw(show, player, -13.5f, -1.5f);
+        saw.enabled = false;
+        GameObject zone = new GameObject("Saw Wake-up Zone");
+        zone.transform.SetParent(show);
+        zone.transform.position = new Vector2(-17f, 0f);
+        BoxCollider2D zoneArea = zone.AddComponent<BoxCollider2D>();
+        zoneArea.isTrigger = true;
+        zoneArea.size = new Vector2(1f, 10f);
+        zone.AddComponent<ShowcaseTrigger>().enableOnEnter = new Behaviour[] { saw };
+
+        PlaceCheckpoint(checkpointPrefab, "Checkpoint 0 (Main Level Start)", -8.5f, top);
+    }
+
+    static MovingSaw Saw(Transform parent, Transform player, float x, float y)
     {
         GameObject saw = MakeSprite(parent, "Rotating Saw", "Assets/Saw.png", new Vector2(x, y), "charecter", 3);
         saw.tag = "Enemy";
@@ -388,6 +425,7 @@ public static class LevelBuilder
         moving.maxSpeed = 2;
         moving.damage = 1;
         moving.player = player;
+        return moving;
     }
 
     // A solid tiled block on the Ground layer spanning x0..x1 and bottom..top

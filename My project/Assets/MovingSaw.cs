@@ -8,6 +8,10 @@ public class MovingSaw : EnemyController
 
     void FixedUpdate()
     {
+        //The player is destroyed on Game Over, so there is nothing left to follow
+        if (player == null)
+            return;
+
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position,
             maxSpeed * Time.deltaTime);
     }
